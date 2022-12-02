@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Shoess.Models
 {
-    public class ShoeDbContext<T> : DbContext
+    public class ShoeDbContext : DbContext
     {
         public DbSet<Shoe> Shoes { get; set; }
         public DbSet<ShoeType> ShoeTypes { get; set; }

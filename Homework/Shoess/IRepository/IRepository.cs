@@ -8,17 +8,14 @@ using Umbraco.Core.Models.Entities;
 
 namespace Shoess.IRepository
 {
-    public interface  IRepository<T> where T : EntityBase
+    public interface IRepository<T> where T : class
     {
         T GetById(int id);
         IEnumerable<T> List();
         IEnumerable<T> List(Expression<Func<T, bool>> predicate);
+        void Insert(T entity);
         void Add(T entity);
         void Delete(T entity);
         void Edit(T entity);
-    }
-    public abstract class EntityBase
-    {
-        public int Id { get; set; }
     }
 }

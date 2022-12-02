@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Shoess.IRepository;
+using System.Linq.Expressions;
 
 namespace Shoess.IRepository
 {
-    public interface GenericRepository<T> : IRepository<T> where T : class
+    public class GenericRepository<T> : IRepository<T> where T : class
     {
         private ShoeDbContext _context;
         private DbSet<T> tables;
+
         public GenericRepository()
         {
-            this._context = new ShoeDbContext<T>();
+            this._context = new ShoeDbContext();
             tables = _context.Set<T>();
         }
         public GenericRepository(ShoeDbContext _context)
@@ -49,6 +51,36 @@ namespace Shoess.IRepository
         public void Save()
         {
             _context.SaveChanges();
+        }
+
+        public T GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> List()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<T> List(Expression<Func<T, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(T entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Edit(T entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }
